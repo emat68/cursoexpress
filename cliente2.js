@@ -38,14 +38,27 @@ class Cliente extends Direccion{
         //var a = new Direccion();
         //this.direccion = a.setDireccionValores(P_calle,P_numero ,P_comuna, P_region);
         arrClientes.push(this);
+        //console.log(arrClientes);
     }
     getNombre(){
         return this.nombre;
     }
+    getDireccion(p_IdCliente){
+        
+    }
+    getNombreId(p_idCli){
+        arrClientes.map(function(cliente, index){
+            if (cliente.idcliente == p_idCli){
+                console.log(cliente.idcliente + " " + cliente.nombre + " " + cliente.calle);
+                return cliente.nombre;
+            }               
+        })    
+    }
     getsolonombre(){
-        arrClientes.map(function(cliente){
-        //return cliente.nombre;
-        console.log(cliente.nombre);
+        arrClientes.map(function(cliente, index){
+        console.log(index + " " + cliente.nombre);
+        return cliente.nombre;
+       
         })    
     }
 }

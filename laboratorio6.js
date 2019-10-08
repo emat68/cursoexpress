@@ -4,6 +4,8 @@ const path = require('path');
 let util = require('util');
 const express = require('express');
 const bodyParser = require('body-parser');
+const misclientes = require('./curso3_2');
+let datosCli = misclientes.datosCliente;
 
 
 let app = express()
@@ -27,6 +29,21 @@ let app = express()
        // console.log(Files.join(''));
     });
     res.end("Fin Leer Archivo" + req.body.directorio);
+})
+
+.post('/empleados', (req, res)=>{
+
+    var empleado = datosCli.getNombreId(req.body.IdCliente);
+    console.log(empleado);
+     
+})
+
+.get('/empleados/todos', (req, res)=>{
+     //var soloNombre1 = nn.getsolonombre();
+     console.log(req.url);
+      var soloNombre1 = datosCli.getsolonombre();
+      console.log(soloNombre1);
+      res.end("Fin Leer Nombre");
 })
 
 .get('/mostrarQueryString', (req,res)=>{
