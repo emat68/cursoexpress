@@ -5,12 +5,14 @@ let util = require('util');
 const express = require('express');
 const bodyParser = require('body-parser');
 const misclientes = require('./curso3_2');
+const cookieParser = require('cookie-parser');
 let datosCli = misclientes.datosCliente;
 
 
 let app = express()
+.use(cookieParser())
 .use(bodyParser())
-.use(express.static(__dirname + '/public'))
+.use(express.static (__dirname + '/public'))
 .use(function(err,req,res,next){
     console.log(req.body);
     next();
@@ -32,18 +34,32 @@ let app = express()
 })
 
 .post('/empleados', (req, res)=>{
-
-    var empleado = datosCli.getNombreId(req.body.IdCliente);
-    console.log(empleado);
+   
+   //Para obtener los resultados de la llamada, se debe crear una funcion
+   //
+    datosCli.getNombreId(req.body.IdCliente,function(empleado){
+        console.log(empleado);
+        var json = JSON.stringify(empleado);
+        res.cookie("Nombre",json);
+        res.end("Fin Leer Id Cliente ==> " + empleado.IdCliente +" " + empleado.nombre + "" + empleado.calle);
+    });
+    // console.log(empleado);
+    // //req.header('cookie');
+    // res.cookie("Nombre",empleado);  
+    // res.end("Fin Leer Id Cliente" + empleado);
      
 })
 
 .get('/empleados/todos', (req, res)=>{
      //var soloNombre1 = nn.getsolonombre();
      console.log(req.url);
-      var soloNombre1 = datosCli.getsolonombre();
-      console.log(soloNombre1);
-      res.end("Fin Leer Nombre");
+      datosCli.getsolonombre(function(empleados){
+        console.log(empleados);
+       res.end("Fin Leer Nombre" + empleados.idcliente +" " + empleados.nombre + " " + empleados.calle);
+    //    var json = JSON.stringify(empleados);
+    //     res.end("Fin Leer Nombre" + json);
+      });
+      
 })
 
 .get('/mostrarQueryString', (req,res)=>{

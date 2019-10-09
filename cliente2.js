@@ -46,18 +46,23 @@ class Cliente extends Direccion{
     getDireccion(p_IdCliente){
         
     }
-    getNombreId(p_idCli){
+    // El parametro callback permitira retornar los datos a la funcion que llama
+    getNombreId(p_idCli, callback){
         arrClientes.map(function(cliente, index){
             if (cliente.idcliente == p_idCli){
-                console.log(cliente.idcliente + " " + cliente.nombre + " " + cliente.calle);
-                return cliente.nombre;
+               // console.log("cliente: " + cliente.nombre);
+               //retorno en parametro callback el resultado de la busqueda
+               //retorno el array completo
+                callback(cliente);
+
             }               
-        })    
+        })  
     }
-    getsolonombre(){
+
+    getsolonombre(callback){
         arrClientes.map(function(cliente, index){
-        console.log(index + " " + cliente.nombre);
-        return cliente.nombre;
+        //console.log(index + " " + cliente.nombre);
+        callback(cliente);
        
         })    
     }
