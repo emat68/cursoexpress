@@ -1,3 +1,4 @@
+var modeloCliente = require('./transCliente');
 
 'use strict';
 var arrClientes = [];
@@ -37,8 +38,10 @@ class Cliente extends Direccion{
         this.direccion = super.setDireccionValores(P_calle,P_numero ,P_comuna, P_region);
         //var a = new Direccion();
         //this.direccion = a.setDireccionValores(P_calle,P_numero ,P_comuna, P_region);
-        arrClientes.push(this);
-        //console.log(arrClientes);
+        
+        //arrClientes.push(this);
+        modeloCliente.insertCliente(this);
+       
     }
     getNombre(){
         return this.nombre;
@@ -57,6 +60,9 @@ class Cliente extends Direccion{
 
             }               
         })  
+    }
+    getMongoNombreXId(P_idCli){
+      let datosCliente = modeloCliente.recuperaClientes(P_idCli);
     }
 
     getsolonombre(callback){

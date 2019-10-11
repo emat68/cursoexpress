@@ -4,15 +4,59 @@
     </head>
     <body>
            <form method="POST" action="http://localhost:4000/leerArchivo">
+            <p>Despliega contenido carpeta</p>
               <input type="text" name="directorio" id="1" value="" placeholder="Ingresa un directorio"/>
               <input type="submit" name="Ingresra" value="Ver Archivo"></input>
            </form>
            <br>
-           <form method="POST" action="http://localhost:4000/empleados">
-            <input type="text" name="IdCliente" id="2" value="" placeholder="Ingresa ID Cliente"/>
-            <input type="submit" name="Ingresar" value="Consultar"></input>
+           <form method="POST" action="http://localhost:4000/empleados/id">
+            <p>Buscar Cliente</p>
+            <div>   
+                <div>
+                    <input type="text" name="IdCliente" id="3" value="" placeholder="Ingresa ID Cliente"/>
+                </div>
+                <div>
+                    <input type="text" name="ClienteNombre" id="4" value="" placeholder="Ingresa Nombre Cliente"/>
+                    <input type="text" name="ClienteFecha" id="3" value="" placeholder="Ingresa Fecha Cliente"/>
+                </div>
+                <div>
+                    <input type="text" name="ClienteCalle" id="5" value="" placeholder="Ingresa Nombre Calle Cliente"/>
+                    <input type="text" name="ClienteNumero" id="6" value="" placeholder="Ingresa Numero Calle Cliente"/>
+                </div>
+                <div>
+                    <input type="text" name="ClienteComuna" id="7" value="" placeholder="Ingresa Comuna Cliente"/>
+                    <input type="text" name="ClienteRegion" id="8" value="" placeholder="Ingresa Region Cliente"/>
+                </div>
+          </div>
+            <div>
+               <input type="submit" name="Ingresar" value="Consultar"></input>
+            </div>
          </form>
          <br>
+         <form method="POST" action="http://localhost:4000/ingresaCliente">
+            <p>Ingresar Cliente</p>
+           <div>   
+                <div>
+                    <input type="text" name="IdCliente" id="3" value="" placeholder="Ingresa ID Cliente"/>
+                </div>
+                <div>
+                    <input type="text" name="ClienteNombre" id="4" value="" placeholder="Ingresa Nombre Cliente"/>
+                    <input type="text" name="ClienteFecha" id="3" value="" placeholder="Ingresa Fecha Cliente"/>
+                </div>
+                <div>
+                    <input type="text" name="ClienteCalle" id="5" value="" placeholder="Ingresa Nombre Calle Cliente"/>
+                    <input type="text" name="ClienteNumero" id="6" value="" placeholder="Ingresa Numero Calle Cliente"/>
+                </div>
+                <div>
+                    <input type="text" name="ClienteComuna" id="7" value="" placeholder="Ingresa Comuna Cliente"/>
+                    <input type="text" name="ClienteRegion" id="8" value="" placeholder="Ingresa Region Cliente"/>
+                </div>
+          </div>
+
+            <input type="submit" name="Ingresar" value="Consultar"></input>
+         </form>         
+         <br>
+
          <a href="http://localhost:4000/empleados/todos">buscar clientes</a>
 
     </body>
