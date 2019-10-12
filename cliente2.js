@@ -1,4 +1,3 @@
-var modeloCliente = require('./transCliente');
 
 'use strict';
 var arrClientes = [];
@@ -36,42 +35,32 @@ class Cliente extends Direccion{
         this.nombre = P_nombre;
         this.fechacreacion = P_fecha;
         this.direccion = super.setDireccionValores(P_calle,P_numero ,P_comuna, P_region);
-        //var a = new Direccion();
-        //this.direccion = a.setDireccionValores(P_calle,P_numero ,P_comuna, P_region);
         
         //arrClientes.push(this);
-        modeloCliente.insertCliente(this);
+        //modeloCliente.insertCliente(this);
        
     }
-    getNombre(){
-        return this.nombre;
-    }
-    getDireccion(p_IdCliente){
-        
-    }
+    
     // El parametro callback permitira retornar los datos a la funcion que llama
-    getNombreId(p_idCli, callback){
-        arrClientes.map(function(cliente, index){
-            if (cliente.idcliente == p_idCli){
-               // console.log("cliente: " + cliente.nombre);
-               //retorno en parametro callback el resultado de la busqueda
-               //retorno el array completo
-                callback(cliente);
+    // getNombreId(p_idCli, callback){
+    //     arrClientes.map(function(cliente, index){
+    //         if (cliente.idcliente == p_idCli){
+    //            // console.log("cliente: " + cliente.nombre);
+    //            //retorno en parametro callback el resultado de la busqueda
+    //            //retorno el array completo
+    //             callback(cliente);
 
-            }               
-        })  
-    }
-    getMongoNombreXId(P_idCli){
-      let datosCliente = modeloCliente.recuperaClientes(P_idCli);
-    }
-
-    getsolonombre(callback){
-        arrClientes.map(function(cliente, index){
-        //console.log(index + " " + cliente.nombre);
-        callback(cliente);
+    //         }               
+    //     })  
+    // }
+  
+    // getsolonombre(callback){
+    //     arrClientes.map(function(cliente, index){
+    //     //console.log(index + " " + cliente.nombre);
+    //     callback(cliente);
        
-        })    
-    }
+    //     })    
+    // }
 }
 
 module.exports = {

@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const misclientes = require('./cliente2');
 const cookieParser = require('cookie-parser');
+var modeloCliente2 = require('./transCliente');
 
 
 
@@ -37,7 +38,6 @@ let app = express()
    
    //Para obtener los resultados de la llamada, se debe crear una funcion
    //
-   misclientes.
     datosCli.getNombreId(req.body.IdCliente,function(empleado){
         console.log(empleado);
         var json = JSON.stringify(empleado);
@@ -61,9 +61,14 @@ let app = express()
     req.body.ClienteComuna,
     req.body.ClienteRegion
     );
+    modeloCliente2.insertCliente(insCli);
+    var json = JSON.stringify(insCli);
+    res.cookie("Nombre",json);
+
      //res.end("Se ingreso datos cliente => " +  req.body.ClienteNombre);
     // res.send('./menu.html');
      res.redirect('/menu.html');
+     res.end("Ingresado");
     // var P_id = req.body.IdCliente;
     // var P_nombre = req.body.ClienteNombre;
     // var P_fecha  = req.body.ClienteFecha;
@@ -77,16 +82,31 @@ let app = express()
 
 .post('/empleados/id', (req, res)=>{
     
-     let getCli = new misclientes.cli45();
-     var datosClie = getCli.getMongoNombreXId(req.body.IdCliente);
+    //  let getCli = new misclientes.cli45();
+    //  var datosClie = getCli.getMongoNombreXId(req.body.IdCliente);
+     var datos = modeloCliente2.recuperaClientes(req.body.IdCliente);
      
+     console.log(datos);
      res.redirect('/respCliente.html');
+     res.end("Encontrado");
+     //res.render('./respCliente.html'); //falta cargar modulo HTML
+
     //  console.log(datosClie);
     //   datosCli.getsolonombre(function(empleados){
     //     console.log(empleados);
     //    res.end("Fin Leer Nombre" + empleados.idcliente +" " + empleados.nombre + " " + empleados.calle);
     // //    var json = JSON.stringify(empleados);
     // //     res.end("Fin Leer Nombre" + json);
+})
+
+.post('/empleadoDelete/id', (req, res)=>{
+    // Invocamos al archivo de transacciones
+    // let delCliente = new misclientes.cli45();
+    // var clienteEliinado = delCliente.delMongoClienteXId(req.body.IdCliente);
+
+    var clienteEliinado = modeloCliente2.eliminaClienteId(req.body.IdCliente);
+    res.redirect('/respCliente.html');
+    res.end("Eliminado");
 })
 
 .get('/mostrarQueryString', (req,res)=>{

@@ -40,6 +40,7 @@ function insertCliente(P_cliente){
         //         console.log("Se insertaron 3 datos");
         //         //callback(result);
         //     })
+            
             mongoUtil.disconnectDB();
             console.log("Cierre DB");
         } 
@@ -69,6 +70,35 @@ function recuperaClientes(P_IdCliente){
         } 
     })     
 }
+function eliminaClienteId(P_IdCliente){
+    mongoUtil.connectToServer(function(err, callback){
+        var db = mongoUtil.getDB();
+        const datosc = db.collection('clientes');
+        let _Id = '' + P_IdCliente;
+        
+        if (err){
+            console.log(err);
+        }else{
+           console.log("conexion OK");
+           console.log("Parametro => " + _Id );
+           
+
+            datosc.deleteOne({idcliente:_Id}, function(err, result){
+                if (err)
+                {
+                    console.log("No fue posible eliminar el Empleado " + JSON.stringify({idcliente:_Id}));
+                }
+                else
+                {
+                    console.log("Se elimino el Empleado: " + JSON.stringify({idcliente:_Id}));
+                }
+            })      
+
+            mongoUtil.disconnectDB();
+            console.log("Cierre DB");
+        } 
+    })     
+}
 // cliente.connect(function(err){
 //     assert.equal(null,err);
 //     console.log("conexion OK");
@@ -77,4 +107,4 @@ function recuperaClientes(P_IdCliente){
 //         cliente.close(db);
 //     });
 // });
-module.exports = { insertCliente, recuperaClientes}
+module.exports = { insertCliente, recuperaClientes, eliminaClienteId}
