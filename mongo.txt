@@ -35,4 +35,5 @@ const users = db.collection('users') try {
 
      Ejemplo Angular
      https://fernando-gaitan.com.ar/crud-con-angular-node-js-y-mongodb-parte-1/
+     https://carlosazaustre.es/tutorial-ejemplo-de-aplicacion-web-con-angular-js-y-api-rest-con-node/
      
