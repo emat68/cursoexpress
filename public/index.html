@@ -1,8 +1,25 @@
-<html>
-<head>
-  <title>Primera pagina de Ernesto</title>
-</head>
-<body>
-    &Eacute;sta es la primera p&aacute;gina de Ernesto
-</body>
-</html>
+<html ng-app="demo">
+  <head>
+    <title>Primera pagina de Ernesto</title>
+    <script src="./vendor/jquery-1.11.1/dist/jquery.js"></script>
+    <script src="./vendor/bootstrap-4.0.0-alpha.6-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="./vendor/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css">
+    <script src="./vendor/angular-1.7.8/angular.js"></script>
+    <script src="./vendor/angular-1.7.8/angular-route.js"></script>
+    <script>
+         var demoApp = angular.module('demo',[]);
+         demoApp.controller('MainController',['$scope',function($scope){
+             $scope.vm = {
+                ClearName: function(){
+                  this.name = "";
+                }
+             }
+         }])
+    </script>
+  </head>
+  <body ng-controller = "MainController">
+      <label> Ingrese su Nombre</label>
+      <input type="text" ng-model ="vm.name"/>
+      <button class="btn btn-danger" ng-click="vm.ClearName()">Borrar</button>
+  </body>
+  </html>

@@ -1,7 +1,7 @@
 var  db = require('./dbconnectMongo');
 const condb = db.cnn
 
-const db1 = condb.getc
+
 
 
 'use strict';

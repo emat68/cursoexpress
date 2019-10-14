@@ -32,3 +32,7 @@ const users = db.collection('users') try {
      } 
    // Server code anywhere above here inside 
      connectDB() }) 
+
+     Ejemplo Angular
+     https://fernando-gaitan.com.ar/crud-con-angular-node-js-y-mongodb-parte-1/
+     
